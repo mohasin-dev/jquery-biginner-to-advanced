@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Biginner to Advanced</title>
+</head>
+
+<body>
+    You need to write all html here, accourding to which script you want to test.
+
+    <script>
+        $(document).ready(function() {
+            // Do this when document/page is ready
+            alert('Hello world'); // show "Hello world" in the brouser window
+            console.log('Hello world'); // show "Hello world" in the brouser console tab
+        })
+        $('h1').hide(); // hide h1 tag
+        $('h1#heading1').hide(); // hide the id heading1 next to h1 tag
+        $('.heading2').hide(); // hide the class heading2 
+
+        $('p span').css('color', 'red'); // make color red span tag next to p tag
+
+        $('ul#list li:first').css('color', 'red'); // make color red first li of id list in ul tag
+        $('ul#list li:last').css('color', 'green'); // make color green last li of id list in ul tag
+        $('ul#list li:even').css('background-color', 'yellow'); // make background color yellow  all even li of id list in ul tag
+        $('ul#list li:odd').css('background-color', 'red'); // make background color red all odd li of id list in ul tag
+        $('ul#list li:nth-child(3n)').css('list-style', 'none'); // make list style none 3rd li of id list in ul tag
+        $(':text').hide(); // hide input type text
+        $('[href]').css('color', 'red'); // make color red of all href / a tag
+        $('a[href="http://yahoo.com"]').css('color', 'green'); // make color green of href which href=http://yahoo.com
+        $('*').hide(); // hide everything of the page
+
+        // All event of jquery
+        // alert after id btn1 is clicked  
+        $('#btn1').click(function() {
+            alert('Button Clicked!');
+        });
+
+        // Hide para1 class after id btn2 is clicked
+        $('#btn1').on('click', function() {
+            $('.para1').hide();
+        });
+
+        // Show para1 class after id btn2 is clicked
+        $('#btn2').on('click', function() {
+            $('.para1').show();
+        });
+
+        // toggle para1 class after id btn2 is dubble clicked
+        $('#btn1').dblclick(function() {
+            $('.para1').toggle();
+        });
+
+        // toggle para1 class after id btn2 is hover
+        $('#btn1').hover(function() {
+            $('.para1').toggle();
+        });
+
+        // toggle para1 class after id btn2 is mouse enter
+        $('#btn1').on('mouseenter', function() {
+            $('.para1').toggle();
+        });
+
+        // toggle para1 class after id btn2 is mouse leave
+        $('#btn1').on('mouseleave', function() {
+            $('.para1').toggle();
+        });
+
+        // toggle para1 class after id btn2 is mouse move
+        $('#btn1').on('mousemove', function() {
+            $('.para1').toggle();
+        });
+
+        // toggle para1 class after id btn2 is mouse down
+        $('#btn1').on('mousedown', function() {
+            $('.para1').toggle();
+        });
+
+        // toggle para1 class after id btn2 is mouse up
+        $('#btn1').on('mouseup', function() {
+            $('.para1').toggle();
+        });
+
+        // toggle para1 class after id btn2 is mouse leave
+        $('#btn1').click(function(e) {
+            alert(e.currentTarget.id); // get the id of the current target
+            alert(e.currentTarget.innerHTML); // get the inner html of the current target
+            alert(e.currentTarget.outerHTML); // get the outer html of the current target
+            alert(e.currentTarget.className); // get the class name of the current target
+        });
+
+        // toggle para1 class after id btn2 is mouse leave
+        $(document).on('mousemove', function(e) {
+            alert(e.pageX); // get the x position of the mouse
+            alert(e.pageY); // get the y position of the mouse
+        });
+
+        // Change background color pink after focus/click on input type text
+        $('input').focus(function() {
+            $(this).css('background', 'pink');
+        });
+
+        // Change background color white after blur/click outside on input type text
+        $('input').blur(function() {
+            $(this).css('background', 'white');
+        });
+
+        // Get the value of the input type text after keyup
+        $('input').keyup(function(e) {
+            console.log(e.target.value);
+        });
+
+        // Get the value of the select tag which has id gender
+        $('select#gender').change(function(e) {
+            alert(e.target.value);
+        });
+
+        // console the value of input field text which has id name after submit the form which has id form
+        $('#form').submit(function(e) {
+            e.preventDefault(); // Prevent default behavior of submit
+            var name = $('input#name').val();
+            console.log(name);
+        });
+
+        // Fade out id box within 3 seconds and change the text id btnFadeOut after id btnFadeOut clicked
+        $('#btnFadeOut').click(function() {
+            $('#box').fadeOut(3000, function() {
+                $('#btnFadeOut').text('Its Gone');
+            });
+        });
+
+        // Fade in id box within 3 seconds after id btnFadeIn clicked
+        $('#btnFadeIn').click(function() {
+            $('#box').fadeIn(3000);
+        });
+
+        // Fade toogle id box within 1 seconds after id btnFadeTog clicked
+        $('#btnFadeTog').click(function() {
+            $('#box').fadeToggle(1000);
+        });
+
+        // Slide down id box within 3 seconds after id btnSlideDown clicked
+        $('#btnSlideDown').click(function() {
+            $('#box').slideDown(3000);
+        });
+
+        // Slide up id box within 3 seconds after id btnSlideUp clicked
+        $('#btnSlideUp').click(function() {
+            $('#box').slideUp(3000);
+        });
+
+        // Slide toogle id box within 3 seconds after id btnSlideTog clicked
+        $('#btnSlideTog').click(function() {
+            $('#box').slideToggle(3000);
+        });
+
+        // Stop id box current behavior after id btnStop clicked
+        $('#btnStop').click(function() {
+            $('#box').stop();
+        });
+
+        // Animate id box from left to right after id moveRight clicked
+        $('#moveRight').click(function() {
+            $('#box2').animate({
+                left: 500,
+                height: '300px',
+                width: '300px',
+                opacity: '0.5'
+            });
+        });
+
+        // Animate id box from right to left after id moveLeft clicked
+        $('#moveLeft').click(function() {
+            $('#box2').animate({
+                left: 0,
+                height: '100px',
+                width: '100px',
+                opacity: '1'
+            });
+        });
+
+        // Animate id box around after id moveAround clicked
+        $('#moveAround').click(function() {
+            var box = $('#box2');
+            box.animate({
+                left: 300
+            });
+            box.animate({
+                top: 300
+            });
+            box.animate({
+                left: 0,
+                top: 300
+            });
+            box.animate({
+                left: 0,
+                top: 0
+            });
+        });
+
+        // make color red of class para1 next to p tag
+        $('p.para1').css('color', 'red');
+
+        // make background color red of class para1 next to p tag
+        $('p.para1').css({
+            color: 'red',
+            background: '#ccc'
+        });
+
+        // Remove a class named "myClass" with class para2 next to p tag
+        $('p.para2').addClass('myClass');
+
+        // Remove a class named "myClass" with class para2 next to p tag
+        $('p.para2').removeClass('myClass');
+
+        // Toggle class para2 next to p tag after id btn1 clicked
+        $('#btn1').click(function() {
+            $('p.para2').toggleClass('myClass');
+        });
+
+        // Change text to "Hello World" of the id myDiv
+        $('#myDiv').text('Hello World');
+
+        // Change html to "<h3>Hello World</h3>" of the id myDiv
+        $('#myDiv').html('<h3>Hello World</h3>');
+
+        // alert the text of the id myDiv
+        alert($('#myDiv').text());
+        // Append new li element to the ul tag
+        $('ul').append('<li>Append List Item</li>');
+        // Prepend class para1 to class para2
+        $('.para1').appendTo('.para2');
+        // Prepend "<h4>Hello</h4>" before ul tag
+        $('ul').before('<h4>Hello</h4>');
+
+        // Prepend "<h4>Hello</h4>" after ul tag
+        $('ul').after('<h4>World</h4>');
+
+        // make empty the ul tag
+        $('ul').empty();
+
+        // make detach the ul tag
+        $('ul').detach();
+
+        // Change a tag attribute target = _blank
+        $('a').attr('target', '_blank');
+
+        // Alert href attribute of a tag 
+        alert($('a').attr('href'));
+
+        // Move attribute href from a tag 
+        $('a').removeAttr('target');
+
+        // Hide p tag after p tag clicked
+        $("p").click(function() {
+            $(this).hide(); // this refers the current target
+        });
+
+        // Wrap p tag with h1 tag
+        $('p').wrap('<h1>');
+
+        // alert the key code of the key pressed after keyup
+        $('input').keyup(function(e) {
+            alert(e.which); // get the key code of the key pressed
+        });
+
+        // create an array with some names
+        var myArr = ['Brad', 'Kelley', 'Nate', 'Jose'];
+
+        // append all names in the array to the ul tag
+        $.each(myArr, function(i, val) {
+            $('ul').append('<li>' + val + '</li>');
+        });
+
+        // Convert all ul list items into an array
+        var newArr = $('ul li').toArray();
+
+        // console inner HTML of all the array values
+        $.each(newArr, function(i, val) {
+            console.log(val.innerHTML);
+        });
+
+        // Get method example
+        $('#btn').click(function() {
+            $.get('test.php', {
+                title: 'Hello World',
+            }).done(function(data) {
+                console.log(data);
+            }).fail(function(error) {
+                console.log(error);
+            }).always(function() {
+                console.log('Complete');
+            });
+        });
+
+        // Post method form submit example
+        $('#postForm').submit(function(e) {
+            e.preventDefault();
+
+            var title = $('#title').val();
+            var body = $('#body').val();
+            var url = $(this).attr('action');
+
+            $.post(url, {
+                title: title,
+                body: body
+            }).done(function(data) {
+                console.log('Post Saved');
+                console.log(data);
+            }).fail(function(error) {
+                console.log(error);
+            }).always(function() {
+                console.log('Post Complete');
+            });
+        });
+
+        // Another way to post/get method form submit example
+        // Bind to the submit event of our form
+        $("#foo").submit(function(event) {
+            event.preventDefault();
+
+            // Serialize the data in the form
+            var serializedData = $(this).serialize();
+
+            $.ajax({
+                url: "test.php",
+                type: "post", // method type get/post
+                data: values,
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                },
+                // Can be done this way too
+                // error: function(errors) {
+                //     console.log(errors);
+                // },
+                complete: function() {
+                    console.log('AJAX Call Completed');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
